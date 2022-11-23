@@ -40,9 +40,17 @@
 <body>
 <div>
     <h1>Example Domain</h1>
-    <p>This domain is for use in illustrative examples in documents. You may use this
-    domain in literature without prior coordination or asking for permission.</p>
-    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+    <p><div class="demo"></div></p>
+<script>
+$('.demo').croppie({
+    url: 'demo/autor',
+});
+</script>
+<script>
+var c = new Croppie(document.getElementById('item'), opts);
+// call a method
+c.method(args);
+</script>
 </div>
 </body>
 </html>
