@@ -41,17 +41,12 @@
 <main>
     <h1>Example Domain</h1>
     <p><div class="demo"></div></p>
-<script>
-$('.demo').croppie({
-    url: 'demo/ferry.png',
-});
-</script>
+<img class="my-image" src="demo/ferry.png" />
 
 <script>
-var c = new Croppie(document.getElementById('item'), opts);
-// call a method
-c.method(args);
+$('.my-image').croppie();
 </script>
+
 </main>
 </body>
 </html>
