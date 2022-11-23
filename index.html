@@ -16,7 +16,7 @@
         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         
     }
-    div {
+    main {
         width: 600px;
         margin: 5em auto;
         padding: 2em;
@@ -29,7 +29,7 @@
         text-decoration: none;
     }
     @media (max-width: 700px) {
-        div {
+        main {
             margin: 0 auto;
             width: auto;
         }
@@ -38,19 +38,20 @@
 </head>
 
 <body>
-<div>
+<main>
     <h1>Example Domain</h1>
     <p><div class="demo"></div></p>
 <script>
 $('.demo').croppie({
-    url: 'demo/autor',
+    url: 'demo/ferry.png',
 });
 </script>
+
 <script>
 var c = new Croppie(document.getElementById('item'), opts);
 // call a method
 c.method(args);
 </script>
-</div>
+</main>
 </body>
 </html>
