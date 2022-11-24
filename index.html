@@ -46,6 +46,30 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+    <script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#my-image').attr('src', e.target.result);
+      var resize = new Croppie($('#my-image')[0], {
+        viewport: { 
+          width: 200, 
+          height: 200,
+          type: 'circle'
+        },
+        boundary: { 
+          width: 300, 
+          height: 300 
+        },
+        // showZoomer: false,
+        // enableResize: true,
+        enableOrientation: true
+      });
+      $('#use').fadeIn();
+      $('#use').on('click', function() {
+        resize.result('base64').then(function(dataImg) {
+          var data = [{ image: dataImg }, { name: 'myimgage.jpg' }];
+    </script>
   </body>
 </html>
