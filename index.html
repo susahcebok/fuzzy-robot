@@ -87,17 +87,20 @@
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     
 <script>
-var basic = $('#demo-basic').croppie({
-    viewport: {
-        width: 300,
-        height: 300,
-      type: 'square'
-    },
-    mouseWheelZoom: false,
-    boundary: { width: 300, height: 300 },
-  enforceBoundary: false,
-  url: twibbon,
+        type: "rawcanvas",
+        circle: false
+    }).then(html => {
+      var res = document.querySelector("#result");
+      res.innerHTML = "";
+      res.appendChild(html);
+    });
 });
+
+function orientation () {
+  return (flipped ? [2,7,4,5] : [1,6,3,8])[rotated]
+}
+
+
     </script>
   </body>
 </html>
