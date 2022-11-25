@@ -14,6 +14,29 @@
         width: 100%;
         height: auto;
 }
+#page {
+  background: #FFF;
+  padding: 20px;
+  margin: 20px;
+}
+
+#demo-basic {
+  width: 300px;
+  height: 300px;
+}
+
+.cr-viewport::after {
+  content: "";
+  width: 90%;
+    height: 90%;
+    display: block;
+    border-radius: 50%;
+    border: 0px solid lightgrey;
+    top: 5%;
+    position: absolute;
+    left: 5%;
+}
+
 .cr-boundary:before{content:'';position:absolute;top:0;left:0;height:100%;width:100%;background-image:url(https://www.twibbon.udb.ac.id/images/1_twibbon_udb.png);background-size:100%}
     </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js"></script>
@@ -31,7 +54,7 @@
     <img id="twibbon" src="badut.png" style="display: none"/>
     <br/>
     <p>Pastikan gambar yang di upload memiliki ukuran</p>
-    <input id="fileInput" type="file" />
+    <!--<input id="fileInput" type="file" />-->
     
 
 <div class="buttons">
@@ -41,6 +64,17 @@
   <a href="#" id="dpwload2" download="download.png" style="display: none">Download twibbon!</a>
   <button id="cancel" onclick="location.reload()">Cancel</button>
 </div>
+
+
+<input id="custom" type="file" accept="image/*">
+
+<div id="page">
+  <div id="demo-basic"></div>
+  <button id="flip-hz">FLIP</button>
+  <button id="rotate">ROTATE</button>
+  <button id="crop">CROP</button>
+</div>
+<div id="result"></div>
 
     
     </div>
