@@ -1,106 +1,64 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="css/croppie.css">
+<link rel="stylesheet" href="css/app.css">
+<style type="text/css">
+.cr-boundary:before{content:'';position:absolute;top:0;left:0;height:100%;width:100%;background-image:url(badut.png);background-size:100%}
+</style>
+<script src="https://kit.fontawesome.com/c2b9b7aca3.js"></script> 
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css" rel="stylesheet">
+<title>Twibbon Generator</title>
+</head>
 
-    <title>Hello, world!</title>
-    <style>
-    img, canvas {
-        width: 100%;
-        height: auto;
-}
-#page {
-  background: #FFF;
-  padding: 20px;
-  margin: 20px;
-}
+<body>
+<div class="container-fluid">
 
-#demo-basic {
-  width: 300px;
-  height: 300px;
-}
+<div class="row justify-content-center">
+<div class="col-md-4 text-center mb-4"> 
+<img src="images/logo.png" width="120"/>
+<hr/>
 
-.cr-viewport::after {
-  content: "";
-  width: 90%;
-    height: 90%;
-    display: block;
-    border-radius: 50%;
-    border: 0px solid lightgrey;
-    top: 5%;
-    position: absolute;
-    left: 5%;
-}
+<div class="uploader"> 
+<canvas id="imageCanvas" class="image-canvas"></canvas>
 
-.cr-boundary:before{content:'';position:absolute;top:0;left:0;height:100%;width:100%;background-image:url(https://www.twibbon.udb.ac.id/images/1_twibbon_udb.png);background-size:100%}
-    </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.js"></script>
-    <script src="https://rawgit.com/exif-js/exif-js/master/exif.js"></script>
-<script type="text/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
-
-  </head>
-  <body>
-    
-    <div class="container">
-    <h1>Hello, world!</h1>
-    <p>
-    <div id="demo-basic"></div>
-    <img id="preview" src="no-image.png"/>
-    <img id="twibbon" src="badut.png" style="display: none"/>
-    <br/>
-    <p>Pastikan gambar yang di upload memiliki ukuran</p>
-    <!--<input id="fileInput" type="file" />-->
-    
-
-<div class="buttons">
-  <canvas id="twibbonbaker" style="width: 300px; height: 300px; display: none"></canvas>
-  <br/>
-  <button id="dpwload" onclick="drawImage()">Buat twibbon!</button>
-  <a href="#" id="dpwload2" download="download.png" style="display: none">Download twibbon!</a>
-  <button id="cancel" onclick="location.reload()">Cancel</button>
+<div class="download-button"> 
+<input type="file" name="file" id="imageLoader" class="inputfile" accept="image/*" /> 
+<label for="imageLoader">Pilih Foto</label>
+<a class="basic-result button">Preview</a>
 </div>
 
+<div class="profile-pic-wrap">
+<div id="demo-basic"></div> 
+<a class="button bg-secondary" id="putar">Putar Foto</a>
+</div> 
 
-<input id="custom" type="file" accept="image/*">
-
-<div id="page">
-  <div id="demo-basic"></div>
-  <button id="flip-hz">FLIP</button>
-  <button id="rotate">ROTATE</button>
-  <button id="crop">CROP</button>
+<a id="downloadlink"></a>
 </div>
-<div id="result"></div>
 
-    
-    </div>
+<div class="card-body">
+<h5 class="card-title text-center">Panduan Penggunaan Twibbon</h5>
+<ol type="numbered" style="padding-left:20px; text-align:justify;">
+<li>Klik Tombol <label for="imageLoader">Pilih Foto</label>. Pilih foto yang kamu inginkan</li>
+<li>Kamu bisa melakukan zoom, geser atau putar foto</li>
+<li>Jika sudah sesuai, klik tombol <b>Preview</b></li>
+<li>Silahkan <b>Download</b> atau <b>Share</b> ke sosial media kamu</li>
+<li>Selesai</li>
+</ol>
+</div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+</div>
+</div>
+</div> 
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="js/apk.js"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    
-<script>
-        type: "rawcanvas",
-        circle: false
-    }).then(html => {
-      var res = document.querySelector("#result");
-      res.innerHTML = "";
-      res.appendChild(html);
-    });
-});
-
-function orientation () {
-  return (flipped ? [2,7,4,5] : [1,6,3,8])[rotated]
-}
-
-
-    </script>
-  </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+<script src="js/load-image.all.min.js"></script>
+<script type="text/javascript">var kampanye = '1_twibbon_udb.png'; var judul = 'udbmoving';</script>
+<script src="js/app.js?607490064"></script> 
+</body>
 </html>
