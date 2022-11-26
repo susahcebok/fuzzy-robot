@@ -24,12 +24,13 @@
 <input type="file" name="file" id="imageLoader" class="inputfile" accept="image/*" /> 
 <label for="imageLoader">Pilih Foto</label>
 <a class="button" id="basic-result">Preview</a>
+<a id="downloadlink">Unduh</a>
 </div>
 <div class="profile-pic-wrap">
 <div id="demo-basic"></div> 
 <a class="button bg-secondary" id="putar">Putar Foto</a>
 </div> 
-<a id="downloadlink"></a>
+<!--<a id="downloadlink"></a>-->
 </div>
 <div class="card-body">
 <h5 class="card-title text-center">Panduan Penggunaan Twibbon</h5>
@@ -63,7 +64,7 @@ var canvas = document.getElementById('imageCanvas');
     canvas.height = 1000;
 var ctx = canvas.getContext('2d');
 
-
+/**
 function popupResult(result) {
   var html;
 
@@ -97,6 +98,7 @@ function popupResult(result) {
   })
 
 }
+**/
 
 /**
  * Draw image
