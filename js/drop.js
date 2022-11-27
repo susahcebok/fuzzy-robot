@@ -3,7 +3,7 @@
 
 $('[type="file"]').ezdz({
   
-  text: 'Drop files here or click to upload..',
+  text: 'Drop files here.',
   
   validators: {
     maxWidth: 1024,
