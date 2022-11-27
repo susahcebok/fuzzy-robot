@@ -1,190 +1,81 @@
-var imageLoader = document.getElementById('imageLoader');
-    imageLoader.addEventListener('change', handleImage, false);
-var canvas = document.getElementById('imageCanvas');
-    canvas.width = 1000;
-    canvas.height = 1000;
-var ctx = canvas.getContext('2d');
+// app.js
 
+let canvas = document.getElementById('canvas');
+let c = canvas.getContext('2d');
+let filename = "twibbon-by-ferry-ayunda";
+let btnDownload = document.getElementById('download');
+let reader = new FileReader();
+let target = new Image();
+let target2 = new Image();
+let image = document.getElementById('image_input');
 
-function popupResult(result) {
-  var html;
+c.canvas.width = 1024;
+c.canvas.height = 1024;
 
-  if (result.html) {
-  	html = result.html;
-  }
+let download = function () {
+    link = document.createElement('a');
+    link.download = filename + '.png';
+    link.href = document.getElementById('canvas').toDataURL()
+    link.click();
+}
 
-  if (result.src) {
-  	html = '<img src="' + result.src + '" />'
-  }
+let destroyInterval = () => {
+    for (var i = 1; i < 99999; i++)
+        window.clearInterval(i);
+}
 
-  Swal.fire({
-    html:html
-  });
+let load = () => {
+    c.clearRect(0, 0, c.canvas.width, c.canvas.height);
+    draw();
+}
 
-  Swal.fire({
-    title: 'Share ke sosial media kamu',
-    html:html,
-    showDenyButton: true,
-    showCancelButton: true,
-    confirmButtonText: `Share`,
-    denyButtonText: `Download`,
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      shareImage();
-      return false;
-    } else if (result.isDenied) {
-      downloadImage();
+let draw = () => {
+    //  made reponsive twibbon
+    c.canvas.width = 1024;
+    c.canvas.height = 1024;
+
+    c.drawImage(target, 0, 0, c.canvas.width, c.canvas.height);
+    c.drawImage(target2, 0, 0, c.canvas.width, c.canvas.height);
+}
+
+let enableButton = () => {
+    let
+}
+
+let init = () => {
+    run = setInterval(function () {
+        load();
+    }, 1000);
+}
+
+let setTwibbon = () => {
+    target2.src = 'images/twibbon.png';
+}
+
+let imageReaderOnLoad = () => {
+    reader.onload = (res) => {
+        target.src = res.target.result.replace(/ +/g, "");
     }
-  })
-
 }
 
-/**
- * Draw image
- */
-function drawFrame() {
-  var img = new Image();
-  img.crossOrigin = "Anonymous";
-  img.src = 'images/'+kampanye;  
-  img.onload = function() {
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    popupResult({
-			src: document.getElementById('imageCanvas').toDataURL('image/jpg'),
-		});
-	   console.log('popup ok');
-  }
+let enableBtnDownload = () => {
+    btnDownload.removeAttribute('disabled');
 }
 
+let generate = () => {
+    
+    if(image.files[0] === undefined) 
+       new jBox('Notice', {
+       content: '<i class="fa fa-warning" style="color:white;"></i> Gambar tidak boleh kosong!',
+       color: 'red'
+       });
 
-function drawProfPict(src) {
-  var img = new Image();
-  img.onload = function(){
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    drawFrame();
-  }
-
-  img.src = src;
-}
-
-/**
- * Load image from user
- */
-function handleImage(e) {
-  // Clear canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  var img_url = e.target.files[0];
-  loadImage.parseMetaData(img_url, function(data) {
-    var ori = 0;
-    if (data.exif) {
-      ori = data.exif.get('Orientation');
+    else{
+        destroyInterval();                               
+        imageReaderOnLoad();
+        setTwibbon();
+        enableBtnDownload();
+        reader.readAsDataURL(image.files[0]);
+        init();
     }
-
-    var loadingImage = loadImage(
-      img_url,
-      function(canvas) {
-        $('.cr-slider').css('visibility', 'visible');
-        $('.loader').remove();
-
-        var dataUrl = canvas.toDataURL('image/jpeg');
-        basic.croppie('bind', {
-            url: dataUrl
-        });
-      },
-      {
-        maxWidth: 2800,
-        maxHeight: 2800,
-        orientation: ori,
-        canvas: true
-      });
-
-    loadingImage.onloadstart = function(event) {
-      $('.cr-viewport').append('<div class="loader"></div>');
-    }
-  });
 }
-
-
-/**
- * Download image from canvas
- */
-
-function downloadCanvas(link, canvasId, filename) {
-  link.href = document.getElementById(canvasId).toDataURL('image/jpeg');
-  link.download = filename;
-}
-
-/*
-$('#unduh').on('click', '.sweet-alert', function() {
-  downloadCanvas(this, 'imageCanvas', 'udb-twibbon');
-});
-*/
-
-function downloadImage() {
-  var link = document.getElementById("downloadlink");
-  link.href = document.getElementById("imageCanvas").toDataURL();
-  link.download = "udb_twibbon.png";
-  link.click();
-}
-
-
-//share
-function shareImage() {
-  var gambar = document.getElementById("imageCanvas");
-  gambar.toBlob( async function(blob) {
-
-    var file = new File([blob], "udb_twibbon.png", {type: 'image/png'});
-
-    const shareData = {
-      title: 'Share UDB Twibbon',
-      text: '#'+judul+' | UDB The Global Entrepreneur University',
-      url: 'https://twibbon.udb.ac.id?udb='+judul,
-      files: [file]
-    };
-
-    if (navigator.share) {
-        await navigator.share(shareData).then(() => {
-          console.log("Berhasil sharing");
-        })
-        .catch(err => {
-          console.log(err.message);
-        });
-    } else {
-        Swal.fire("Browser tidak support share");
-    }
-
-  });
-};
-
-var basic = $('#demo-basic').croppie({
-    viewport: {
-        width: Math.min(300, window.innerWidth - 50),
-        height: Math.min(300, window.innerWidth - 50)
-    },
-    boundary: {
-      width: Math.min(300, window.innerWidth - 50),
-      height: Math.min(300, window.innerWidth - 50),
-    },
-    enableOrientation: true,
-    enableResize: true,
-    enforceBoundary:false
-});
-
-
-$('.basic-result').on('click', function(e) {
-  e.preventDefault();
-  console.log('OK');
-  var downloadButton = this;
-  basic.croppie('result', {
-		type: 'canvas',
-    size:'original',
-	}).then(function (resp) {
-		drawProfPict(resp);
-	});
-});
-
-//putar
-$('#putar').click(function() {
-  basic.croppie('rotate', -90);
-});
