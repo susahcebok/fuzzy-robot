@@ -18,10 +18,10 @@ form{margin: 20px 0;}canvas{width: 100%;height: auto;}
   transition: 0.3s all ease;
   pointer-events: auto;
 }
-buttons-ctr button.active {
+.buttons-ctr button.active {
   background: #FFEB97;
   pointer-events: none;
 }
-buttons-ctr button:focus {
+.buttons-ctr button:focus {
   outline: none;
 }
