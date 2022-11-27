@@ -49,7 +49,7 @@ let init = () => {
 }
 
 let setTwibbon = () => {
-    target2.src = 'badut.png';
+    target2.src = 'images/twibbon.png';
 }
 
 let imageReaderOnLoad = () => {
