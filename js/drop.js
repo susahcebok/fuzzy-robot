@@ -3,7 +3,7 @@
 
 $('[type="file"]').ezdz({
   
-  text: 'Jatuhkan file di sini atau klik untuk mengunggah.',
+  text: 'Drop files here or click to upload..',
   
   validators: {
     maxWidth: 1024,
