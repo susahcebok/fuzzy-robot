@@ -58,14 +58,17 @@
 <div id="custom-modal" class="custom-modal">
 <div class="custom-modal-dialog">
 <div class="custom-modal-content">
-<span class="close-modal">X</span>
+<span class="close-modal"></span>
 <div class="custom-modal-body">
 <div class="custom-modal-inner">
 <!-- Contetn here -->
 <h4>Twibbon Generator </h4>
 <p style="text-align:center;color:red;" id="warning" class=""></p><br>
 <p><canvas id="canvas"></canvas></p>
-<p><button class="category" onclick="download()" id="download" disabled>Unduh</button></p>
+<p>
+<button class="category" onclick="download()" id="download" disabled>Unduh</button>
+<button id="cancel" onclick="location.reload()">Kembali</button>
+</p>
 </div>
 </div>
 </div>
