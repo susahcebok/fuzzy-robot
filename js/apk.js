@@ -8,6 +8,7 @@ let reader = new FileReader();
 let target = new Image();
 let target2 = new Image();
 let image = document.getElementById('image_input');
+let test = document.getElementById("test");
 
 c.canvas.width = 1024;
 c.canvas.height = 1024;
@@ -66,7 +67,7 @@ let generate = () => {
     
     if(image.files[0] === undefined) 
      //  alert('Gambar tidak boleh kosong!');
-         var test = document.getElementById("test");
+         
          alert(test.innerHTML);
 
     else{
