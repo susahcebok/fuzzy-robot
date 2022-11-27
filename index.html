@@ -36,26 +36,41 @@
 <section>
 <!-- <a href="https://susebershop.com/wp-content/uploads/2015/10/SEKOLAH-TINGGI-TEKNOLOGI-DUTA-BANGSA.jpg" target="_blank"><img class=lozad data-src="https://susebershop.com/wp-content/uploads/2015/10/SEKOLAH-TINGGI-TEKNOLOGI-DUTA-BANGSA.jpg" rel="noopener noreferrer"/></a>Sekolah Tinggi Teknologi Duta Bangsa-->
  
- <p>
- <form>
- <input id="image_input" type="file" accept="image/png, image/jpeg" />
- </form>
- </p>
- <p><strong>Png or Jpeg, max 1024x1024</strong></p><br>
+<p>
+<form>
+<input id="image_input" type="file" accept="image/png, image/jpeg" />
+</form>
+</p>
+<p><strong>Png or Jpeg, max 1024x1024</strong></p><br>
 
- <p style="text-align:center;color:red;" id="warning" class=""></p><br>
+<!--<p style="text-align:center;color:red;" id="warning" class=""></p><br>-->
 <!-- <p style="text-align:center;"><strong>Png or Jpeg, max 1024x1024</strong></p><br> -->
 
- <p>
- <section class="article labels">
- <button class="category" onclick="generate()">Pratinjau</button>
- <button class="category" onclick="download()" id="download" disabled>Unduh</button>
- </section>
- </p><br>
+<p>
+<section class="article labels">
+<button class="category modal-link" onclick="generate()">Pratinjau</button>
+<button class="category" onclick="download()" id="download" disabled>Unduh</button>
+</section>
+</p><br>
 
- <p><canvas id="canvas"></canvas></p><br>
+<!--<p><canvas id="canvas"></canvas></p><br>-->
 
- <p>PERANGKAT LUNAK INI DISEDIAKAN "SEBAGAIMANA ADANYA", TANPA JAMINAN APA PUN, TERSURAT MAUPUN TERSIRAT, TERMASUK NAMUN TIDAK TERBATAS PADA JAMINAN DAPAT DIPERDAGANGKAN, KESESUAIAN UNTUK TUJUAN TERTENTU DAN TANPA PELANGGARAN. DALAM KEADAAN APA PUN PENULIS ATAU PEMEGANG HAK CIPTA TIDAK BERTANGGUNG JAWAB ATAS KLAIM, KERUSAKAN ATAU KEWAJIBAN LAINNYA, BAIK DALAM TINDAKAN KONTRAK, KESALAHAN ATAU LAINNYA, YANG TIMBUL DARI, DARI ATAU SEHUBUNGAN DENGAN PERANGKAT LUNAK ATAU PENGGUNAAN ATAU HUBUNGAN LAIN DALAM PERANGKAT LUNAK.</p>
+<div id="custom-modal" class="custom-modal">
+<div class="custom-modal-dialog">
+<div class="custom-modal-content">
+<span class="close-modal">X</span>
+<div class="custom-modal-body">
+<div class="custom-modal-inner">
+<!-- Contetn here -->
+<h4>Twibbon Generator </h4>
+<p style="text-align:center;color:red;" id="warning" class=""></p><br>
+<p><canvas id="canvas"></canvas></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </article>
 
