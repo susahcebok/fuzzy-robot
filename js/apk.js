@@ -65,7 +65,9 @@ let enableBtnDownload = () => {
 let generate = () => {
     
     if(image.files[0] === undefined) 
-       alert('Gambar tidak boleh kosong!');
+     //  alert('Gambar tidak boleh kosong!');
+         var test = document.getElementById("test");
+         alert(test.innerHTML);
 
     else{
         destroyInterval();                               
